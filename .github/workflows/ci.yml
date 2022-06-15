@@ -23,10 +23,10 @@ jobs:
           ref: ${{ github.head_ref }}   # [git-version] checkout the correct branch name
           fetch-depth: 0                # [git-version] fetch the whole repo history
 
-      - name: Set Up Python $PYTHON_VERSION
+      - name: Set Up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v4
         with:
-          python-version: $PYTHON_VERSION
+          python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
       - name: Install Dependencies
