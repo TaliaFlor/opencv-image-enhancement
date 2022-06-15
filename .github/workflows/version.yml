@@ -1,0 +1,38 @@
+name: Versioning
+
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  tag-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0          # fetch the whole repo history
+
+      - name: Tag Version
+        id: tag_version
+        uses: anothrNick/github-tag-action@1.39.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: none
+
+      - name: Echo Tag
+        run: |
+          echo New Version: ${{ steps.tag_version.outputs.tag }}
+          echo Latest Version: ${{ steps.tag_version.outputs.new_tag }}
+          echo Part Changed: ${{ steps.tag_version.outputs.part }}
+
+      - name: Release Version
+        uses: ncipollo/release-action@v1.10.0
+        if: ${{ steps.tag_version.outputs.part != '' }}
+        with:
+          tag: ${{ steps.tag_version.outputs.tag }}
+          generateReleaseNotes: true
