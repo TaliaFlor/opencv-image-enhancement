@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  tag-and-release:
+  versioning:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
         uses: anothrNick/github-tag-action@1.39.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: none
+          DEFAULT_BUMP: minor
 
       - name: Echo Tag
         run: |
