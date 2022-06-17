@@ -8,12 +8,12 @@ import cv2 as cv
 from numpy import ndarray
 
 # Global Variables
-WINDOW_NAME = 'Sobel Demo - Simple Edge Detector'
 SCALE = 1
 DELTA = 0
 KERNEL_SIZE = 3
 DDEPTH = cv.CV_16S
 DEFAULT_IMAGE = '../data/lena.png'
+WINDOW_NAME = 'Sobel Demo - Simple Edge Detector'
 
 
 def get_grad(src_image: ndarray, x_order: int, y_order: int) -> ndarray:
