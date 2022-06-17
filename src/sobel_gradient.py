@@ -30,7 +30,7 @@ def get_scharr_grad(src_image: ndarray, x_order: int, y_order: int) -> ndarray:
 
 
 def main(argv: list[str]) -> None:
-    # Get image path
+    # Get image name
     image_name = argv[0] if len(argv) > 0 else DEFAULT_IMAGE
 
     # Load the image
