@@ -62,7 +62,7 @@ def main(argv: list[str]) -> None:
     grad = cv.addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0)
 
     cv.imshow(WINDOW_NAME, grad)
-    cv.waitKey(0)  # esc
+    cv.waitKey(0)
 
 
 if __name__ == "__main__":
